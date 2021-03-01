@@ -13,18 +13,19 @@
  */
 
 get_header(); 
-
+// Insert secondary nav which displays Page Parent
 get_template_part( 'template-parts/secondary-nav' );
+// Insert page title builder
 get_template_part( 'template-parts/page', 'title' );
 
   if ( !empty( get_the_content() ) ) : 
 
-            while ( have_posts() ) : the_post();
-              get_template_part( 'template-parts/content', 'page' );
-		        endwhile; // End of the loop.
+    while ( have_posts() ) : the_post();
+        get_template_part( 'template-parts/content', 'page' );
+    endwhile; // End of the loop.
 
   endif; 
-
-echo get_template_part( 'template-parts/modules' );
+// Insert additional modules - using ACF Flexible Content
+get_template_part( 'template-parts/modules' );
 
 get_footer();
